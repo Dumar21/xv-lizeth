@@ -19,7 +19,7 @@ export function EnvelopeCover({ guestName, shortName, onOpen, calm }: EnvelopeCo
   function handleClick() {
     if (opening) return;
     setOpening(true);
-    onOpen();
+    setTimeout(onOpen, calm ? 500 : 900);
   }
 
   return (

@@ -37,12 +37,16 @@ export default function Countdown({ target }: { target: string }) {
   ];
 
   return (
-    <div role="timer" aria-label="Cuenta regresiva" className="flex items-center justify-center gap-3 sm:gap-5">
+    <div
+      role="timer"
+      aria-label="Cuenta regresiva"
+      className="flex items-center justify-center gap-1.5 px-3 min-[380px]:gap-2 sm:gap-4 md:gap-5"
+    >
       {items.map(([label, value], i) => (
-        <div key={label} className="flex items-center gap-3 sm:gap-5">
+        <div key={label} className="flex items-center gap-1.5 min-[380px]:gap-2 sm:gap-4 md:gap-5">
           <div className="flex flex-col items-center">
-            <div className="glass-card flex w-20 flex-col items-center justify-center pb-5 pt-1.5 sm:w-28 sm:pb-7 sm:pt-3">
-              <div className="relative flex items-center justify-center ">
+            <div className="glass-card flex w-15 min-w-0 flex-col items-center justify-center rounded-xl py-2 min-[380px]:w-16 sm:w-24 sm:rounded-2xl sm:pb-6 sm:pt-2 md:w-28 md:pb-7 md:pt-3">
+              <div className="relative flex items-center justify-center overflow-hidden">
                 <AnimatePresence mode="popLayout" initial={false}>
                   <motion.span
                     key={value}
@@ -50,16 +54,22 @@ export default function Countdown({ target }: { target: string }) {
                     animate={{ y: 0, opacity: 1 }}
                     exit={{ y: "-100%", opacity: 0 }}
                     transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                    className="gold-text font-serif text-5xl font-light leading-none tabular-nums sm:text-7xl"
+                    className="gold-text font-serif text-3xl font-light leading-none tabular-nums min-[380px]:text-4xl sm:text-6xl md:text-7xl"
                   >
                     {String(value).padStart(2, "0")}
                   </motion.span>
                 </AnimatePresence>
               </div>
             </div>
-            <span className="mt-2 font-serif text-lg italic text-lila sm:text-xl">{label}</span>
+            <span className="mt-1 font-serif text-xs italic text-lila min-[380px]:text-sm sm:mt-2 sm:text-lg md:text-xl">
+              {label}
+            </span>
           </div>
-          {i < 3 && <span className="font-serif text-3xl text-oro/50 sm:text-5xl">:</span>}
+          {i < 3 && (
+            <span className="font-serif text-lg text-oro/40 min-[380px]:text-xl sm:text-4xl md:text-5xl -mt-4 sm:-mt-5">
+              :
+            </span>
+          )}
         </div>
       ))}
     </div>

@@ -180,9 +180,25 @@ function Letter({ guest, code, initialDone }: { guest: Guest; code: string; init
           variants={stage}
           initial="hide"
           animate={revealed ? "show" : "hide"}
-          className="flex min-h-svh flex-col items-center justify-center gap-5 px-6 py-16 text-center"
+          className="flex min-h-svh flex-col items-center justify-center gap-5 px-6 py-12 text-center"
         >
-          <motion.div variants={bloom} style={{ y: calm ? 0 : archY }} className="relative mb-4">
+          {/* Indicador de Deslizar destacado arriba de la foto */}
+          <motion.div variants={rise} className="z-20 mb-1">
+            <div className="flex items-center gap-2 rounded-full border border-oro/40 bg-noche/40 px-6 py-2 backdrop-blur-md shadow-[0_0_20px_rgba(212,175,55,.2)] animate-bounce">
+              <span className="font-serif text-base italic font-medium text-oro-claro/90 sm:text-lg">Desliza para ver más</span>
+              <svg
+                className="h-4 w-4 text-oro/90"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2.5}
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+              </svg>
+            </div>
+          </motion.div>
+
+          <motion.div variants={bloom} style={{ y: calm ? 0 : archY }} className="relative mb-2">
             {/* Romantic Floral Garland on top-right of photo arch */}
             <FloralCorner
               position="top-right"
@@ -260,8 +276,7 @@ function Letter({ guest, code, initialDone }: { guest: Guest; code: string; init
             {EVENT.dateText}
           </motion.p>
 
-          <motion.div variants={rise} className="mt-6 flex flex-col items-center gap-2 text-lila">
-            <span className="font-serif text-lg italic sm:text-xl">Desliza</span>
+          <motion.div variants={rise} className="mt-4 flex flex-col items-center gap-2 text-lila">
             <motion.span
               animate={calm ? undefined : { y: [0, 8, 0] }}
               transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
