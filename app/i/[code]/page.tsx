@@ -397,7 +397,7 @@ function Letter({ guest, code, initialDone }: { guest: Guest; code: string; init
                     </p>
                     <p className="font-serif text-2xl italic text-lila">
                       {done === "confirmado"
-                        ? `Te esperamos con ${passes} ${passes === 1 ? "persona" : "personas"}.`
+                        ? `Invitacion valida para ${passes} ${passes === 1 ? "persona" : "personas"}.`
                         : "Gracias por avisarnos."}
                     </p>
                     <button type="button" className="mt-2 text-lg text-lila underline underline-offset-4" onClick={() => setDone(null)}>
