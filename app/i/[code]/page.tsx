@@ -66,6 +66,23 @@ function Fade({ children, className = "" }: { children: React.ReactNode; classNa
   );
 }
 
+function EnvelopeIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth={1.5}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect x="3" y="5" width="18" height="14" rx="2" />
+      <path d="M3.5 6.5L12 13l8.5-6.5" />
+    </svg>
+  );
+}
+
 function downloadIcs() {
   const start = new Date(EVENT.isoDate);
   const end = new Date(start.getTime() + 6 * 3600000);
@@ -160,6 +177,11 @@ function Letter({ guest, code, initialDone }: { guest: Guest; code: string; init
     { icon: <CalendarIcon className="h-7 w-7" />, title: EVENT.dateText, text: EVENT.timeText },
     { icon: <PinIcon className="h-7 w-7" />, title: EVENT.place, text: EVENT.address },
     { icon: <SparkleIcon className="h-6 w-6" />, title: "Vestimenta", text: EVENT.dressCode },
+    {
+      icon: <EnvelopeIcon className="h-7 w-7" />,
+      title: "Lluvia de sobres",
+      text: "Tu presencia es lo más importante. Si deseas obsequiarme algo, habrá lluvia de sobres.",
+    },
   ];
 
   return (
